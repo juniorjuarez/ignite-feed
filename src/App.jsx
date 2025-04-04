@@ -38,11 +38,11 @@ const posts = [
     publishedAt: new Date("2023-05-11 08:13:30"),
   },
   {
-    id: 1,
+    id: 2,
     author: {
       avatarUrl: "https://github.com/diego3g.png",
       name: "Diego Fernandes",
-      role: "CTO @ Rocketseat",
+      role: "CTO @Rocketseat",
     },
     content: [
       {
@@ -61,6 +61,25 @@ const posts = [
     ],
     publishedAt: new Date("2025-05-10 08:13:30"),
   },
+  {
+    id: 3,
+    author: {
+      avatarUrl: "https://github.com/maykbrito.png",
+      name: "Mayk Brito",
+      role: "CTO @Rocketseat",
+    },
+    content: [
+      {
+        type: "paragraph",
+        content: "Vamos pra cima pessoal, projeto novo chegabdi.",
+      },
+      {
+        type: "link",
+        content: "rcketseat.io",
+      },
+    ],
+    publishedAt: new Date("2025-05-10 08:13:30"),
+  },
 ];
 
 function App() {
@@ -73,6 +92,7 @@ function App() {
           {posts.map((post) => {
             return (
               <Post
+                key={post.id}
                 author={post.author}
                 content={post.content}
                 publishedAt={post.publishedAt}

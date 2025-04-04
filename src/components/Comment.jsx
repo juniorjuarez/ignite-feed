@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar } from "./Avatar";
 import styles from "./Comment.module.css";
 import { ThumbsUp, Trash } from "lucide-react";
 
-export const Comment = () => {
+export const Comment = ({ content, deleteComment }) => {
+  const [likeCount, setLikeCount] = useState(0);
+
+  function handleLikeComment() {
+    setLikeCount(likeCount + 1);
+  }
+
+  function handleDeleteComment() {
+    deleteComment(content);
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar src="https://github.com/juniorjuarez.png" hasBorder={false} />
@@ -16,16 +26,17 @@ export const Comment = () => {
                 Cerca de 1h atrás
               </time>
             </div>
-            <button title="Deletar comentário">
+            <button onClick={handleDeleteComment} title="Deletar comentário">
               <Trash size={24} />
             </button>
           </header>
-          <p>Muito boom, parabens</p>
+          <p>{content}</p>
         </div>
         <footer>
-          <button>
+          <button onClick={handleLikeComment}>
+            {/* <button onClick={() => setLikeCount(likeCount + 1)}> */}
             <ThumbsUp size={16} /> Aplaudir
-            <span>15</span>
+            <span>{likeCount}</span>
           </button>
         </footer>
       </div>

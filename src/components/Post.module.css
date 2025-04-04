@@ -99,9 +99,9 @@
   max-height: 0;
 }
 
-.commentForm textarea:focus + footer {
+.commentForm:focus-within footer {
   max-height: 100px;
-  transition: max-height 0.2s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
   visibility: visible;
 }
 
@@ -110,10 +110,15 @@
   visibility: visible;
 } */
 
-.commentForm button[type="submit"]:hover {
+.commentForm button[type="submit"]:not(:disabled):hover {
   background: var(--green-300);
 }
 
 .commentList {
   margin-top: 2rem;
+}
+
+.commentForm button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
